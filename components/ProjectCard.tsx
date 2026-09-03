@@ -8,11 +8,11 @@ export default function ProjectCard({ title, description }: ProjectCardProps) {
     <div className="border border-[#E5E7EB] p-6 hover:border-[#2E5EAA] transition-colors">
       <h3
         style={{ fontFamily: "var(--font-fraunces)" }}
-        className="text-xl font-semibold text-[#16202A]"
+        className="text-xl font-semibold text-[var(--color-text)]"
       >
         {title}
       </h3>
-      <p className="mt-2 text-[#5B6672] leading-relaxed">{description}</p>
+      <p className="mt-2 text-[var(--color-text-muted)] leading-relaxed">{description}</p>
     </div>
   );
 }

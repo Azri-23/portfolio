@@ -1,10 +1,6 @@
 import ProjectCard from "@/components/ProjectCard";
+import { projects } from "./data/project";
 
-const projects = [
-  { title: "Task Tracker CLI", description: "A command-line task manager built with Python and SQLite." },
-  { title: "Productivity Tracker", description: "A desktop app for tracking focus sessions, built with Tkinter." },
-  { title: "This Portfolio", description: "The site you're looking at right now — built with Next.js and Tailwind." },
-];
 
 export default function ProjectsPage() {
   return (

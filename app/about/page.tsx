@@ -19,12 +19,28 @@ export default function AboutPage() {
             About Me
           </h1>
           <p className="mt-4 text-[var(--color-text-muted)] leading-relaxed max-w-md">
-            Placeholder bio — real content comes in Week 3.
+            I&apos;m a Software Engineering student building my skills across
+            Python, SQL, and modern web development — including the stack this
+            site is built with. I enjoy figuring out how things work under the
+            hood, and I&apos;m currently focused on strengthening my
+            fundamentals in data structures, databases, and full-stack
+            development.
           </p>
 
-          <h2 className="mt-10 text-sm font-medium text-[var(--color-text)]">Skills</h2>
+          <h2 className="mt-10 text-sm font-medium text-[var(--color-text)]">
+            Skills
+          </h2>
           <p className="mt-2 text-[var(--color-text-muted)]">
-            {["Python", "SQL", "TypeScript"].map((skill, i, arr) => (
+            {[
+              "Python",
+              "SQL",
+              "MySQL",
+              "MongoDB",
+              "TypeScript",
+              "Next.js",
+              "Tailwind CSS",
+              "Git",
+            ].map((skill, i, arr) => (
               <span key={skill}>
                 <span className="hover:text-[var(--color-accent)] hover:underline cursor-default">
                   {skill}
@@ -33,6 +49,14 @@ export default function AboutPage() {
               </span>
             ))}
           </p>
+
+          <a
+            href="/resume/azri-resume.pdf"
+            target="_blank"
+            className="mt-8 inline-block text-[var(--color-accent)] hover:underline"
+          >
+            Download Resume →
+          </a>
         </div>
       </div>
     </main>

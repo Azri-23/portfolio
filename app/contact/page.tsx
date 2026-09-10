@@ -22,10 +22,12 @@ export default function ContactPage() {
   });
   const [errors, setErrors] = useState<FormErrors>({});
 
-  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [status, setStatus] = useState<
+    "idle" | "sending" | "success" | "error"
+  >("idle");
 
   function handleChange(
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -46,28 +48,28 @@ export default function ContactPage() {
   }
 
   async function handleSubmit(e: React.FormEvent) {
-  e.preventDefault();
-  if (!validate()) return;
+    e.preventDefault();
+    if (!validate()) return;
 
-  setStatus("sending");
+    setStatus("sending");
 
-  try {
-    const res = await fetch("/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
-    });
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
 
-    if (res.ok) {
-      setStatus("success");
-      setFormData({ name: "", email: "", message: "" });
-    } else {
+      if (res.ok) {
+        setStatus("success");
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        setStatus("error");
+      }
+    } catch {
       setStatus("error");
     }
-  } catch {
-    setStatus("error");
   }
-}
 
   return (
     <main className="px-6 py-20 max-w-3xl mx-auto">
@@ -77,8 +79,15 @@ export default function ContactPage() {
       >
         Contact
       </h1>
+      <p className="mt-4 text-[var(--color-text-muted)] leading-relaxed max-w-md">
+        Have a role, project, or question in mind? Send a message and I&apos;ll
+        get back to you.
+      </p>
 
-      <form onSubmit={handleSubmit} className="mt-10 flex flex-col gap-6 max-w-md">
+      <form
+        onSubmit={handleSubmit}
+        className="mt-10 flex flex-col gap-6 max-w-md"
+      >
         <div>
           <label className="text-sm text-[var(--color-text-muted)]">Name</label>
           <input
@@ -88,11 +97,15 @@ export default function ContactPage() {
             onChange={handleChange}
             className="mt-1 w-full border border-[var(--color-border)] px-3 py-2 bg-transparent text-[var(--color-text)]"
           />
-          {errors.name && <p className="mt-1 text-sm text-red-500">{errors.name}</p>}
+          {errors.name && (
+            <p className="mt-1 text-sm text-red-500">{errors.name}</p>
+          )}
         </div>
 
         <div>
-          <label className="text-sm text-[var(--color-text-muted)]">Email</label>
+          <label className="text-sm text-[var(--color-text-muted)]">
+            Email
+          </label>
           <input
             type="text"
             name="email"
@@ -100,11 +113,15 @@ export default function ContactPage() {
             onChange={handleChange}
             className="mt-1 w-full border border-[var(--color-border)] px-3 py-2 bg-transparent text-[var(--color-text)]"
           />
-          {errors.email && <p className="mt-1 text-sm text-red-500">{errors.email}</p>}
+          {errors.email && (
+            <p className="mt-1 text-sm text-red-500">{errors.email}</p>
+          )}
         </div>
 
         <div>
-          <label className="text-sm text-[var(--color-text-muted)]">Message</label>
+          <label className="text-sm text-[var(--color-text-muted)]">
+            Message
+          </label>
           <textarea
             name="message"
             rows={5}
@@ -112,7 +129,9 @@ export default function ContactPage() {
             onChange={handleChange}
             className="mt-1 w-full border border-[var(--color-border)] px-3 py-2 bg-transparent text-[var(--color-text)]"
           />
-          {errors.message && <p className="mt-1 text-sm text-red-500">{errors.message}</p>}
+          {errors.message && (
+            <p className="mt-1 text-sm text-red-500">{errors.message}</p>
+          )}
         </div>
 
         <button
@@ -124,10 +143,14 @@ export default function ContactPage() {
         </button>
 
         {status === "success" && (
-          <p className="text-sm text-green-600">Message sent — thanks for reaching out!</p>
+          <p className="text-sm text-green-600">
+            Message sent — thanks for reaching out!
+          </p>
         )}
         {status === "error" && (
-          <p className="text-sm text-red-500">Something went wrong. Try again.</p>
+          <p className="text-sm text-red-500">
+            Something went wrong. Try again.
+          </p>
         )}
       </form>
     </main>

@@ -8,7 +8,7 @@ export default function HomePage() {
         Hi, I&apos;m Azri
       </h1>
       <p className="mt-4 text-[var(--color-text-muted)] leading-relaxed max-w-md">
-        Placeholder — real content comes in Week 3.
+  Deskside Engineer by day, Software Engineering student by night — building my way into dev.
       </p>
     </main>
   );
